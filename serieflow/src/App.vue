@@ -114,9 +114,4 @@ import { RouterLink, RouterView } from 'vue-router'
   margin: 0 auto;
 }
 
-@media (max-width: 600px) {
-  .conteudo {
-    padding: 1rem;
-  }
-}
 </style>
