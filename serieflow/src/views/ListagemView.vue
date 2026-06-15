@@ -1,6 +1,5 @@
 <template>
   <div class="listagem">
-    <!-- Cabeçalho da página -->
     <div class="pagina-header">
       <div>
         <h1 class="pagina-titulo">Meu Catálogo</h1>
@@ -10,13 +9,11 @@
       </div>
     </div>
 
-    <!-- Mensagem de erro de conexão -->
     <div v-if="erro" class="mensagem-erro">
       <strong>Não foi possível conectar à API.</strong>
       Verifique se o JSON Server está rodando em <code>http://localhost:3000</code>.
     </div>
 
-    <!-- Filtros -->
     <section v-if="!carregando && !erro" class="secao-filtros">
       <FiltroSeries
         :generos="generosUnicos"
@@ -28,13 +25,11 @@
       </span>
     </section>
 
-    <!-- Loading -->
     <div v-if="carregando" class="estado-vazio">
       <span class="spinner"></span>
       <p>Carregando catálogo...</p>
     </div>
 
-    <!-- Lista de cards -->
     <TransitionGroup
       v-else-if="seriesFiltradas.length > 0"
       name="lista"
@@ -49,7 +44,6 @@
       />
     </TransitionGroup>
 
-    <!-- Estado vazio -->
     <div v-else-if="!erro" class="estado-vazio">
       <span class="vazio-icone">📺</span>
       <p v-if="filtroGenero || filtroStatus">
@@ -77,13 +71,11 @@ const erro = ref(false)
 const filtroGenero = ref('')
 const filtroStatus = ref('')
 
-// ── Computed: gêneros únicos para o select
 const generosUnicos = computed(() => {
   const set = new Set(series.value.map((s) => s.genero))
   return [...set].sort()
 })
 
-// ── Computed: lista filtrada (sem nova requisição à API)
 const seriesFiltradas = computed(() => {
   return series.value.filter((s) => {
     const passaGenero = !filtroGenero.value || s.genero === filtroGenero.value
@@ -95,7 +87,6 @@ const seriesFiltradas = computed(() => {
   })
 })
 
-// ── Carrega séries ao montar
 onMounted(async () => {
   try {
     series.value = await getSeries()
@@ -106,7 +97,6 @@ onMounted(async () => {
   }
 })
 
-// ── Remove série
 async function removerSerie(id) {
   if (!confirm('Remover esta série do catálogo?')) return
   try {
@@ -125,7 +115,6 @@ async function removerSerie(id) {
   gap: 1.75rem;
 }
 
-/* ── Cabeçalho ── */
 .pagina-header {
   display: flex;
   align-items: flex-end;
@@ -148,7 +137,6 @@ async function removerSerie(id) {
   margin-top: 4px;
 }
 
-/* ── Erro ── */
 .mensagem-erro {
   background-color: rgba(192, 57, 43, 0.15);
   border: 1px solid var(--vermelho);
@@ -166,7 +154,6 @@ async function removerSerie(id) {
   font-size: 0.85em;
 }
 
-/* ── Filtros ── */
 .secao-filtros {
   display: flex;
   align-items: flex-end;
@@ -181,14 +168,12 @@ async function removerSerie(id) {
   white-space: nowrap;
 }
 
-/* ── Grade ── */
 .grade-series {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
 
-/* ── Estado vazio / loading ── */
 .estado-vazio {
   display: flex;
   flex-direction: column;
@@ -213,7 +198,6 @@ async function removerSerie(id) {
   text-decoration: underline;
 }
 
-/* ── Spinner ── */
 .spinner {
   display: inline-block;
   width: 32px;
@@ -228,7 +212,6 @@ async function removerSerie(id) {
   to { transform: rotate(360deg); }
 }
 
-/* ── Transição da lista ── */
 .lista-enter-active,
 .lista-leave-active {
   transition: all 0.25s ease;

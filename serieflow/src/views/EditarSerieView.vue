@@ -8,18 +8,15 @@
       <RouterLink to="/" class="btn-voltar">← Voltar</RouterLink>
     </div>
 
-    <!-- Loading -->
     <div v-if="carregando" class="estado-vazio">
       <span class="spinner"></span>
       <p>Carregando dados...</p>
     </div>
 
-    <!-- Erro ao carregar -->
     <div v-else-if="erroCarregar" class="mensagem-erro">
       Série não encontrada ou API indisponível.
     </div>
 
-    <!-- Formulário pré-populado -->
     <div v-else class="form-container">
       <SerieForm
         :dados-iniciais="dadosForm"
