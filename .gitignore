@@ -1,3 +1,18 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependências
+node_modules
+/serielog-front/node_modules
+/serielog-api/node_modules
+
+# Build (Resultado da compilação)
+dist
+/serielog-front/dist
+*.local
+
 # Editor
 .vscode/*
 !.vscode/extensions.json
@@ -8,12 +23,3 @@
 *.njsproj
 *.sln
 *.sw?
-
-# Ambiente
-.env
-.env.*
-!.env.example
-
-# Build
-dist
-*.local
