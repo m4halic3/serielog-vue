@@ -13,8 +13,6 @@ serielog-front/node_modules
 serielog-api/node_modules
 
 # Build
-dist
-dist-ssr
 *.local
 
 # Editor

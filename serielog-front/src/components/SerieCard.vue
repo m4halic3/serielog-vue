@@ -62,7 +62,6 @@ defineEmits(['remover'])
   border-left: 3px solid var(--vinho);
 }
 
-/* ── Header ── */
 .card-header {
   display: flex;
   align-items: center;
@@ -98,7 +97,6 @@ defineEmits(['remover'])
   border: 1px solid var(--cinza-borda);
 }
 
-/* ── Título ── */
 .card-titulo {
   font-family: var(--fonte-display);
   font-size: 1.45rem;
@@ -107,7 +105,6 @@ defineEmits(['remover'])
   line-height: 1.2;
 }
 
-/* ── Meta ── */
 .card-meta {
   display: flex;
   align-items: center;
@@ -129,7 +126,6 @@ defineEmits(['remover'])
   color: var(--vinho-light);
 }
 
-/* ── Ações ── */
 .card-acoes {
   display: flex;
   gap: 0.5rem;
